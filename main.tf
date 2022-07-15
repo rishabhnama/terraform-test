@@ -212,6 +212,18 @@ resource "aws_instance" "private-ec2" {
   }
 }
 
+resource "aws_instance" "private-ec2-2" {
+  ami                         = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type               = "t2.micro"
+  vpc_security_group_ids      = ["${aws_security_group.nsg-private.id}"]
+  subnet_id                   = aws_subnet.private-subnet.id
+  associate_public_ip_address = false
+
+  tags = {
+    Name = "Private EC2"
+  }
+}
+
 
 
 
