@@ -189,7 +189,7 @@ resource "aws_security_group" "nsg-private" {
 #Public EC2
 resource "aws_instance" "public-ec2" {
   ami                         = "ami-005e54dee72cc1d00" # us-west-2
-  instance_type               = "t8.micro"
+  instance_type               = "t2.micro"
   vpc_security_group_ids      = ["${aws_security_group.nsg-public.id}"]
   subnet_id                   = aws_subnet.public-subnet.id
   associate_public_ip_address = true
